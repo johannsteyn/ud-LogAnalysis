@@ -18,7 +18,8 @@ select name, sum(views) as total_views from
     as threetables group by name order by total_views desc;
     
   
-Question 3.select errdate, http_requests, http_404,
+Question 3.
+select errdate, http_requests, http_404,
 100.0 - http_404 / http_requests as errpct from
     (select date_trunc('day', time) as reqdate, count(*)
     as http_requests from log group by reqdate)
