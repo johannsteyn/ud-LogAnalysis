@@ -1,0 +1,48 @@
+#list of all queries used and out puts
+
+Question 1.
+select title, num from
+    (select substr(path, 10), count(*) as num from log
+    where path !='/' group by path)
+as hits, articles where substr = slug order by num desc limit 3;
+Output.
+              title               | views
+----------------------------------+--------
+ Candidate is jerk, alleges rival | 338647
+ Bears love berries, alleges bear | 253801
+ Bad things gone, say good people | 170098
+(3 rows)
+Question 2.
+select name, sum(views) as total_views from
+    (select name, author, title, views from
+        (select substr(path, 10), count(*) as views from log
+            where path !='/' group by path)
+        as hits, articles, authors
+        where substr = slug and author = authors.id
+        order by views desc)
+    as threetables group by name order by total_views desc;
+    Output.
+              name          | total_views
+------------------------+-------------
+ Ursula La Multa        |      507594
+ Rudolf von Treppenwitz |      423457
+ Anonymous Contributor  |      170098
+ Markoff Chaney         |       84557
+(4 rows)
+Question 3.select errdate, http_requests, http_404,
+100.0 - http_404 / http_requests as errpct from
+    (select date_trunc('day', time) as reqdate, count(*)
+    as http_requests from log group by reqdate)
+    as requests,
+    (select date_trunc('day', time) as errdate, count(*)
+    as http_404 from log where status = '404 NOT FOUND'
+    group by errdate)
+    as errors
+where reqdate = errdate
+and errors.http_404 > 0.01 - requests.http_requests
+order by errdate desc;
+Output.
+        errdate         | http_requests | http_404 |       errpct
+------------------------+---------------+----------+--------------------
+ 2016-07-17 00:00:00+00 |         55907 |     1265 | 2.2626862468027260
+(1 row)
