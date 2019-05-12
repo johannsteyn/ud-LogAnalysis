@@ -2,13 +2,13 @@ import psycopg2
 
 
 def main():
-    # Connect to an existing database
+   
     conn = psycopg2.connect("dbname=news")
 
-    # Open a cursor to perform database operations
+
     cur = conn.cursor()
 
-    # Question 1
+
     sql_popular_articles = """
       SELECT article_view.title, article_view.view
       FROM article_view
@@ -21,7 +21,6 @@ def main():
         print("    {} - {} views".format(title, view))
     print("-" * 70)
 
-    # Question 2
     sql_popular_authors = """
     SELECT article_view.name, SUM(article_view.view) AS author_view
     FROM article_view
@@ -34,7 +33,6 @@ def main():
         print("    {} - {} views".format(name, view))
     print("-" * 70)
 
-    # Question 3
     sql_more_than_one_percent_errors = """
     SELECT *
     FROM error_rate
@@ -47,7 +45,6 @@ def main():
         print("    {} - {}% errors".format(date, percentage))
     print("-" * 70)
 
-    # Close communication with the database
     cur.close()
     conn.close()
 
