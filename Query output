@@ -1,0 +1,22 @@
+Question 1.
+title               | views
+----------------------------------+--------
+ Candidate is jerk, alleges rival | 338647
+ Bears love berries, alleges bear | 253801
+ Bad things gone, say good people | 170098
+(3 rows)
+
+Question 2.
+          name          | total_views
+------------------------+-------------
+ Ursula La Multa        |      507594
+ Rudolf von Treppenwitz |      423457
+ Anonymous Contributor  |      170098
+ Markoff Chaney         |       84557
+(4 rows)
+ 
+ Qestion 3.
+         errdate         | http_requests | http_404 |       errpct
+------------------------+---------------+----------+--------------------
+ 2016-07-17 00:00:00+00 |         55907 |     1265 | 2.2626862468027260
+(1 row)
