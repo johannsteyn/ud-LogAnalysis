@@ -1,12 +1,11 @@
 import psycopg2
 
-
-    conn = psycopg2.connect("dbname=news")
-    c = db.cursor()
-    c.execute(query)
-    rows = c.fetchall()
-    db.close()
-    return rows
+conn = psycopg2.connect("dbname=news")
+c = db.cursor()
+c.execute(query)
+rows = c.fetchall()
+db.close()
+return rows
 
 
 sql_qestion1= """
@@ -17,9 +16,9 @@ as hits, articles where substr = slug
 order by num desc limit 3;
 """
 results = run_query(query)
-PRINT("Most popular articles:")
+print("Most popular articles:")
 for title, num in result:
-print(sql_question2.format(title,num))
+print("title: {}, num: {}", sql_puestion3.format(titile,num))
 pass
 sql_qestion2="""
 select name, sum(views) as total_views from
@@ -32,9 +31,9 @@ select name, sum(views) as total_views from
     as threetables group by name order by total_views desc;
   """
  results = run_query(query)
-    PRINT("Most popular article authors")
-    for title, num in result
-    print(sql_question2.format(title, num))
+    print("Most popular article authors")
+    for title, num in result:
+  print("title: {}, num: {}", sql_puestion3.format(titile,num))
     pass
     sql_question3= """
     select errdate, http_requests, http_404,
@@ -52,6 +51,6 @@ order by errdate desc;
 """
 results= run_query(query)
 PRINT("More than 1% error days")
-for title, num in result
-print(sql_puestion3.format(titile,num))
+for title, num in result:
+print("title: {}, num: {}", sql_puestion3.format(titile,num))
 pass
