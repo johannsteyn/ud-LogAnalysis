@@ -30,7 +30,7 @@ select name, sum(views) as total_views from
         order by views desc)
     as threetables group by name order by total_views desc;
   """
- results = run_query(query)
+results = run_query(query)
     print("Most popular article authors")
     for title, num in result:
   print("title: {}, num: {}", sql_puestion3.format(titile,num))
