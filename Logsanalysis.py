@@ -18,7 +18,7 @@ order by num desc limit 3;
 results = run_query(query)
 print("Most popular articles:")
 for title, num in result:
-print("title: {}, num: {}", sql_puestion3.format(titile,num))
+    print("title: {}, num: {}", sql_puestion3.format(titile,num))
 pass
 sql_qestion2="""
 select name, sum(views) as total_views from
