@@ -5,7 +5,7 @@ c = db.cursor()
 c.execute(query)
 rows = c.fetchall()
 db.close()
-return rows
+
 
 
 sql_qestion1= """
