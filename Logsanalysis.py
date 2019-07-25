@@ -9,9 +9,9 @@ db.close()
 
 def sqlquestion1():
     sqlq1= """
-    select title, num from
-    as hits, articles where substr = slug 
-    order by num desc limit 3;
+    select top 3 from articles
+    from newsdata
+    order by desc;
     """
     results = run_query(query)
 print("Most popular articles:")
