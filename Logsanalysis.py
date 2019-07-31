@@ -34,17 +34,13 @@ def sqlquestion2():
 pass
 def sqlquestion3():
     sqlq3= """
-    select errdate, http_requests, http_404,
-    100.0 - http_404 / http_requests as errpct from
-    (select date_trunc('day', time) as reqdate, count(*)
-    as http_requests from log group by reqdate)
-    as requests,
-    (select date_trunc('day', time) as errdate, count(*)
-    as http_404 from log where status = '404 NOT FOUND'
-    group by errdate)
-    as errors
-    and errors.http_404 > 0.01 - requests.http_requests
-    order by errdate desc;
+    select time, status
+, count(*) percent
+from log
+where status = '404 NOT FOUND'
+group by time, status
+having count(*) > 0.02
+order by percent desc
     """
     results= run_query(query)
     print("More than 1% error days")
