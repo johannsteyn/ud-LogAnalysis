@@ -1,9 +1,12 @@
 #list of all queries used and out puts
 
 Question 1.
-select top 3 from articles
-where newsdata
-order by desc;
+ select title, count(log.id) as views
+from articles, log
+where log.path=concat('/article/', articles.slug)
+group by title
+order by views desc
+limit 3;
 
 Question 2.
 select name, sum(views) as total_views from articles
