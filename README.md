@@ -32,5 +32,10 @@ How to run the data:
 5.Run Vagrant up
 6.log into VM via vagrant ssh
 7. log into DB via psql -d news -f newsdata.sql (for later logins use psql -d news)
-8. run the queries or cd into logsanalysis.py (has queries in it)
+Use this create view to answer question 2.
+- CREATE VIEW views AS 
+SELECT authors, title
+FROM authors JOIN articles
+ON articles.authors=autors.id
+8. run logsanalysis.py 
 9.\q to exit db
