@@ -1,4 +1,4 @@
-!# usr/bin/env python2
+#!/usr/bin/env python2
 import psycopg2
 def run_query():
     conn = psycopg2.connect("dbname=news")
@@ -17,7 +17,7 @@ def sqlquestion1():
     results = run_query(query)
     print("Most popular articles:")
     for title, num in result:
-        print("title: {}, num: {}", sql_puestion3.format(titile,num))
+        print("title: {}, num: {}", sqlquestion1.format(titile,num))
     pass
 def sqlquestion2():
     sqlq2="""
@@ -31,7 +31,7 @@ def sqlquestion2():
     results = run_query(query)
     print("Most popular article authors")
     for title, num in result:
-        print("title: {}, num: {}", sql_puestion3.format(titile,num))
+        print("title: {}, num: {}", sqlquestion2.format(titile,num))
 pass
 def sqlquestion3():
     sqlq3= """
@@ -46,5 +46,5 @@ def sqlquestion3():
     results= run_query(query)
     print("More than 1% error days")
     for title, num in result:
-        print("title: {}, num: {}", sql_puestion3.format(titile,num))
+        print("title: {}, num: {}", sqlquestion3.format(titile,num))
     pass
