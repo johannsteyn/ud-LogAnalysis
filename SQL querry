@@ -9,10 +9,12 @@ order by views desc
 limit 3;
 
 Question 2.
-select name, sum(views) as total_views from articles
-as hits, articles, author order by views desc)
-group by name order by total_views desc;
-    
+select name, count(log.id)
+from views, log, articles
+where log.path=concat('/article/', articles.slug)
+group by name, views
+order by views desc;
+   
   
 Question 3.
 select time, status
