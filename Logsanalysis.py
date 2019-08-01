@@ -20,12 +20,12 @@ def sqlquestion1():
     pass
 def sqlquestion2():
     sqlq2="""
-        select name, sum(views) as total_views from
-        (select name, author, title, views from
-          as hits, articles, authors
-            where substr = slug and author = authors.id
-            order by views desc)
-        as threetables group by name order by total_views desc;
+   select name, count(log.id)
+    from views, log, articles
+    where log.path=concat('/article/', articles.slug)
+    group by name, views
+    order by views desc;
+
         """
     results = run_query(query)
     print("Most popular article authors")
