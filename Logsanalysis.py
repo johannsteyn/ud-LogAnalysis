@@ -33,7 +33,7 @@ def sqlquestion1():
     results = run_query(query)
     print("Most popular articles:")
     for i in result:
-        print(str(i[0] + '---' +` str(i[1]) + 'views')
+        print(str(i[0] + '---' + str(i[1]) + 'views')
     print(" ")
 
 def sqlquestion2():
@@ -50,3 +50,7 @@ def sqlquestion3():
     for i in result:
         print(str(i[0] + '---' +` str(i[1]) + 'views')
     print(" ")
+              
+sqlquestion1(sqlq1)              
+sqlquestion2(sqlq2)
+sqlquestion3(sqlq3)               
